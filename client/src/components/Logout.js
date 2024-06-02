@@ -1,14 +1,15 @@
-// src/components/Logout.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const Logout = () => {
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.removeItem('token'); // Fjern token fra lokal lagring
-    navigate('/'); // Omdiriger til hovedsiden
-  }, [navigate]);
+    logout();
+    navigate('/'); // Redirect to the homepage after logout
+  }, [logout, navigate]);
 
   return null;
 };

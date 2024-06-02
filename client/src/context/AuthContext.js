@@ -1,5 +1,3 @@
-// client/src/context/AuthContext.js
-
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -36,10 +34,16 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.removeItem('token');
+  const logout = async () => {
+    try {
+      await axios.post('http://localhost:5000/api/auth/logout');
+      setUser(null);
+      setToken(null);
+      localStorage.removeItem('token');
+    } catch (error) {
+      console.error('Logout error:', error);
+      throw error;
+    }
   };
 
   return (

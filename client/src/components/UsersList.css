@@ -1,0 +1,37 @@
+.table-wrapper {
+  overflow-x: auto; /* Add horizontal scrolling */
+  margin-top: 20px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* Allows the table to adjust to the content size */
+}
+
+.users-table th, .users-table td {
+  border: 1px solid #ddd;
+  padding: 4px; /* Reduce padding for a more compact table */
+  text-align: left;
+  font-size: 12px; /* Reduce font size */
+}
+
+.users-table th {
+  background-color: #f8f9fa; /* Lys bakgrunnsfarge */
+  color: #212529; /* Mørk tekstfarge */
+}
+
+.users-table tr:nth-child(even) {
+  background-color: #e9ecef; /* Lys bakgrunnsfarge */
+}
+
+.users-table tr:hover {
+  background-color: #dee2e6; /* Litt mørkere bakgrunnsfarge for hover */
+}
+
+@media (max-width: 600px) {
+  .users-table th, .users-table td {
+    padding: 2px; /* Further reduce padding for smaller screens */
+    font-size: 10px; /* Further reduce font size */
+  }
+}

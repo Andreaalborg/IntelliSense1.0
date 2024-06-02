@@ -1,5 +1,3 @@
-// backend/middleware.js
-
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
@@ -7,7 +5,7 @@ const verifyToken = (req, res, next) => {
   if (!token) return res.status(403).send('Access denied. No token provided.');
 
   try {
-    const decoded = jwt.verify(token, 'secretkey');
+    const decoded = jwt.verify(token.split(' ')[1], process.env.JWT_SECRET || 'secretkey');
     req.user = decoded;
     if (!req.user.isVerified) {
       return res.status(403).send('Access denied. Email not verified.');

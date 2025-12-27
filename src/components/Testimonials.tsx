@@ -5,20 +5,20 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Maria Hansen",
-    role: "CEO, TechStart AS",
-    content: "IntelliSense AI transformerte vår digitale tilstedeværelse fullstendig. Trafikken til nettsiden økte med 300% på bare tre måneder, og vi ser en tydelig økning i leads.",
+    name: "Thomas K.",
+    company: "TechStart",
+    content: "IntelliSense transformerte vår digitale tilstedeværelse fullstendig. Trafikken til nettsiden økte med 300% på bare tre måneder, og vi ser en tydelig økning i leads.",
     rating: 5,
   },
   {
-    name: "Erik Johansen",
-    role: "Grunnlegger, Nordisk Konsult",
+    name: "Camilla H.",
+    company: "Nordisk Konsult",
     content: "Profesjonelt team som virkelig forstår digital markedsføring. De leverte over forventning og var alltid tilgjengelige for spørsmål. Anbefales på det sterkeste!",
     rating: 5,
   },
   {
-    name: "Anne Kristiansen",
-    role: "Markedssjef, EcoSolutions",
+    name: "Erik J.",
+    company: "EcoSolutions",
     content: "Vi hadde prøvd flere byråer før, men ingen leverte som IntelliSense. Deres strategiske tilnærming og fokus på resultater er imponerende.",
     rating: 5,
   },
@@ -94,11 +94,11 @@ export default function Testimonials() {
               {/* Author */}
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex items-center justify-center text-white font-semibold">
-                  {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  {testimonial.name.charAt(0)}
                 </div>
                 <div>
                   <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-sm text-[var(--foreground-muted)]">{testimonial.role}</p>
+                  <p className="text-sm text-[var(--foreground-muted)]">{testimonial.company}</p>
                 </div>
               </div>
             </motion.div>
@@ -108,4 +108,3 @@ export default function Testimonials() {
     </section>
   );
 }
-

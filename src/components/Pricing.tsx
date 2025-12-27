@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Sparkles, ArrowRight } from "lucide-react";
+import { Check, Sparkles, ArrowRight, MessageSquare } from "lucide-react";
 import Link from "next/link";
 
 const plans = [
@@ -105,7 +105,7 @@ export default function Pricing() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -176,6 +176,51 @@ export default function Pricing() {
               </Link>
             </motion.div>
           ))}
+
+          {/* Custom/Egendefinert Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="relative rounded-2xl p-8 bg-[var(--background)] border border-dashed border-[var(--border)] hover:border-[var(--primary)] transition-colors"
+          >
+            <div className="h-full flex flex-col">
+              {/* Header */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-2">Egendefinert</h3>
+                <p className="text-[var(--foreground-muted)] text-sm">
+                  Har du spesielle behov? Vi skreddersyr en løsning for deg.
+                </p>
+              </div>
+
+              {/* Icon */}
+              <div className="flex-grow flex items-center justify-center mb-8">
+                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[var(--primary)]/10 to-[var(--secondary)]/10 border border-[var(--primary)]/20 flex items-center justify-center">
+                  <MessageSquare className="w-10 h-10 text-[var(--primary)]" />
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="mb-8">
+                <ul className="space-y-3 text-sm text-[var(--foreground-muted)]">
+                  <li>• Større prosjekter</li>
+                  <li>• Spesielle integrasjoner</li>
+                  <li>• Unike krav</li>
+                  <li>• Fleksibel prising</li>
+                </ul>
+              </div>
+
+              {/* CTA Button */}
+              <Link
+                href="/kontakt"
+                className="group flex items-center justify-center gap-2 w-full py-4 rounded-full font-semibold bg-[var(--surface)] border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--primary)] hover:bg-[var(--surface-hover)] transition-all duration-300"
+              >
+                La oss snakke
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
 
         {/* Bottom note */}
@@ -185,10 +230,9 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="text-center text-sm text-[var(--foreground-muted)] mt-12"
         >
-          Alle priser er eks. mva. Skreddersydde løsninger tilgjengelig på forespørsel.
+          Alle priser er eks. mva. Ingen bindingstid.
         </motion.p>
       </div>
     </section>
   );
 }
-

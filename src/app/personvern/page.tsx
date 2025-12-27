@@ -22,7 +22,7 @@ export default function Personvern() {
               <section>
                 <h2 className="text-2xl font-semibold mb-4">1. Innledning</h2>
                 <p className="text-[var(--foreground-muted)] leading-relaxed">
-                  IntelliSense AI er opptatt av å beskytte ditt personvern. Denne personvernerklæringen 
+                  IntelliSense er opptatt av å beskytte ditt personvern. Denne personvernerklæringen 
                   forklarer hvordan vi samler inn, bruker, deler og beskytter personopplysninger når du 
                   bruker våre tjenester.
                 </p>

@@ -66,14 +66,14 @@ export default function OmOss() {
             className="max-w-3xl"
           >
             <span className="inline-block text-sm font-medium text-[var(--primary)] uppercase tracking-wider mb-4">
-              Om IntelliSense AI
+              Om IntelliSense
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Din partner for digital{" "}
               <span className="gradient-text-warm">vekst</span>
             </h1>
             <p className="text-xl text-[var(--foreground-muted)] leading-relaxed">
-              IntelliSense AI er et norsk digitalbyrå som hjelper bedrifter med å vokse 
+              IntelliSense er et norsk digitalbyrå som hjelper bedrifter med å vokse 
               gjennom skreddersydde digitale løsninger. Vi kombinerer strategi, design 
               og teknologi for å levere resultater som monner.
             </p>
@@ -120,7 +120,7 @@ export default function OmOss() {
                 Hvorfor IntelliSense AI?
               </h2>
               <p className="text-[var(--foreground-muted)] leading-relaxed mb-6">
-                IntelliSense AI ble startet med én klar visjon: Å gjøre profesjonell 
+                IntelliSense ble startet med én klar visjon: Å gjøre profesjonell 
                 digital markedsføring tilgjengelig for alle bedrifter, uansett størrelse.
               </p>
               <p className="text-[var(--foreground-muted)] leading-relaxed mb-6">

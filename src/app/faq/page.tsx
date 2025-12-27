@@ -10,8 +10,8 @@ const faqCategories = [
     name: "Generelt",
     faqs: [
       {
-        question: "Hva gjør IntelliSense AI?",
-        answer: "IntelliSense AI er et norsk digitalbyrå som hjelper bedrifter med å vokse gjennom skreddersydde digitale løsninger. Vi tilbyr tjenester som nettside-utvikling, SEO, digital markedsføring og merkevarebygging.",
+        question: "Hva gjør IntelliSense?",
+        answer: "IntelliSense er et norsk digitalbyrå som hjelper bedrifter med å vokse gjennom skreddersydde digitale løsninger. Vi tilbyr tjenester som nettside-utvikling, SEO, digital markedsføring og merkevarebygging.",
       },
       {
         question: "Hvem er deres typiske kunder?",

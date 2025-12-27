@@ -22,7 +22,7 @@ export default function Vilkar() {
               <section>
                 <h2 className="text-2xl font-semibold mb-4">1. Generelt</h2>
                 <p className="text-[var(--foreground-muted)] leading-relaxed">
-                  Disse vilkårene gjelder for alle tjenester levert av IntelliSense AI. 
+                  Disse vilkårene gjelder for alle tjenester levert av IntelliSense. 
                   Ved å bruke våre tjenester aksepterer du disse vilkårene i sin helhet.
                 </p>
               </section>
@@ -30,7 +30,7 @@ export default function Vilkar() {
               <section>
                 <h2 className="text-2xl font-semibold mb-4">2. Tjenestebeskrivelse</h2>
                 <p className="text-[var(--foreground-muted)] leading-relaxed">
-                  IntelliSense AI tilbyr digitale tjenester inkludert, men ikke begrenset til, 
+                  IntelliSense tilbyr digitale tjenester inkludert, men ikke begrenset til, 
                   nettside-utvikling, SEO-optimalisering, digital markedsføring og merkevarebygging. 
                   Detaljert omfang av tjenester avtales i separate kontrakter eller tilbud.
                 </p>
@@ -72,7 +72,7 @@ export default function Vilkar() {
               <section>
                 <h2 className="text-2xl font-semibold mb-4">6. Ansvarsbegrensning</h2>
                 <p className="text-[var(--foreground-muted)] leading-relaxed">
-                  IntelliSense AI er ikke ansvarlig for indirekte tap, tapt fortjeneste eller 
+                  IntelliSense er ikke ansvarlig for indirekte tap, tapt fortjeneste eller 
                   følgeskader. Vårt totale ansvar er begrenset til beløpet kunden har betalt 
                   for de aktuelle tjenestene de siste 12 månedene.
                 </p>

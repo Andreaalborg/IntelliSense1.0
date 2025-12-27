@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { LogoArrows } from "@/components/Logo";
 
 const footerLinks = {
@@ -22,12 +22,6 @@ const footerLinks = {
     { href: "/vilkar", label: "Vilkår" },
   ],
 };
-
-const socialLinks = [
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
-  { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
-];
 
 export default function Footer() {
   return (
@@ -121,26 +115,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-16 pt-8 border-t border-[var(--border)] flex items-center justify-center">
           <p className="text-sm text-[var(--foreground-muted)]">
             © {new Date().getFullYear()} IntelliSense. Alle rettigheter reservert.
           </p>
-          
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[var(--surface)] hover:bg-[var(--surface-hover)] border border-[var(--border)] hover:border-[var(--primary)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-[var(--primary)] transition-all duration-300"
-                aria-label={social.label}
-              >
-                <social.icon className="w-4 h-4" />
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Sparkles, ArrowRight, HelpCircle } from "lucide-react";
+import { Check, Sparkles, ArrowRight, HelpCircle, MessageSquare } from "lucide-react";
 import Link from "next/link";
 
 const plans = [
@@ -110,7 +110,7 @@ export default function Priser() {
       {/* Pricing Cards */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {plans.map((plan, index) => (
               <motion.div
                 key={plan.name}
@@ -120,7 +120,7 @@ export default function Priser() {
                 transition={{ delay: index * 0.1 }}
                 className={`relative rounded-2xl p-8 ${
                   plan.highlighted
-                    ? "bg-gradient-to-b from-[var(--primary)]/10 to-[var(--background)] border-2 border-[var(--primary)]/30 scale-105"
+                    ? "bg-gradient-to-b from-[var(--primary)]/10 to-[var(--background)] border-2 border-[var(--primary)]/30"
                     : "bg-[var(--background-secondary)] border border-[var(--border)]"
                 }`}
               >
@@ -176,6 +176,47 @@ export default function Priser() {
                 </Link>
               </motion.div>
             ))}
+
+            {/* Custom/Egendefinert Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="relative rounded-2xl p-8 bg-[var(--background-secondary)] border border-dashed border-[var(--border)] hover:border-[var(--primary)] transition-colors"
+            >
+              <div className="h-full flex flex-col">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-bold mb-2">Egendefinert</h3>
+                  <p className="text-[var(--foreground-muted)] text-sm">
+                    Har du spesielle behov? Vi skreddersyr en løsning for deg.
+                  </p>
+                </div>
+
+                <div className="flex-grow flex items-center justify-center mb-8">
+                  <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[var(--primary)]/10 to-[var(--secondary)]/10 border border-[var(--primary)]/20 flex items-center justify-center">
+                    <MessageSquare className="w-10 h-10 text-[var(--primary)]" />
+                  </div>
+                </div>
+
+                <div className="mb-8">
+                  <ul className="space-y-3 text-sm text-[var(--foreground-muted)]">
+                    <li>• Større prosjekter</li>
+                    <li>• Spesielle integrasjoner</li>
+                    <li>• Unike krav</li>
+                    <li>• Fleksibel prising</li>
+                  </ul>
+                </div>
+
+                <Link
+                  href="/kontakt"
+                  className="group flex items-center justify-center gap-2 w-full py-4 rounded-full font-semibold bg-[var(--surface)] border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--primary)] hover:bg-[var(--surface-hover)] transition-all duration-300 mt-auto"
+                >
+                  La oss snakke
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.div>
           </div>
 
           <motion.p

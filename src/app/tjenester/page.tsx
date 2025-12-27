@@ -6,6 +6,7 @@ import {
   ArrowRight, Check, Sparkles 
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   {
@@ -22,6 +23,7 @@ const services = [
       "Skalerbar arkitektur",
     ],
     color: "var(--primary)",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
   },
   {
     id: "seo",
@@ -32,11 +34,12 @@ const services = [
       "Teknisk SEO-audit",
       "Keyword research og analyse",
       "On-page optimalisering",
-      "Innholdsstrategil",
+      "Innholdsstrategi",
       "Link building",
       "Lokal SEO",
     ],
     color: "var(--secondary)",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
   },
   {
     id: "markedsforing",
@@ -52,6 +55,7 @@ const services = [
       "Influencer samarbeid",
     ],
     color: "var(--accent)",
+    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=80",
   },
   {
     id: "analyse",
@@ -67,6 +71,7 @@ const services = [
       "ROI måling",
     ],
     color: "var(--primary)",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
   },
   {
     id: "merkevare",
@@ -82,6 +87,7 @@ const services = [
       "Sosiale medier templates",
     ],
     color: "var(--secondary)",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
   },
   {
     id: "support",
@@ -89,14 +95,15 @@ const services = [
     title: "Vedlikehold & Support",
     description: "Kontinuerlig oppfølging og teknisk support som sikrer at løsningene dine alltid fungerer optimalt.",
     features: [
-      "24/7 overvåking",
+      "Kontinuerlig overvåking",
       "Sikkerhetsoppdateringer",
       "Backup og recovery",
       "Ytelsesoptimalisering",
-      "Innholdoppdateringer",
+      "Innholdsoppdateringer",
       "Prioritert support",
     ],
     color: "var(--accent)",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
   },
 ];
 
@@ -183,13 +190,25 @@ export default function Tjenester() {
 
                 <div className={index % 2 === 1 ? "md:order-1" : ""}>
                   <div 
-                    className="aspect-square rounded-2xl flex items-center justify-center"
+                    className="aspect-[4/3] rounded-2xl overflow-hidden relative"
                     style={{ 
-                      background: `linear-gradient(135deg, ${service.color}10, ${service.color}05)`,
                       border: `1px solid ${service.color}20`
                     }}
                   >
-                    <service.icon className="w-32 h-32 opacity-20" style={{ color: service.color }} />
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    {/* Gradient overlay */}
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${service.color}20, transparent)`
+                      }}
+                    />
                   </div>
                 </div>
               </motion.div>
@@ -227,4 +246,3 @@ export default function Tjenester() {
     </div>
   );
 }
-

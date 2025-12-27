@@ -17,15 +17,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IntelliSense AI | Digitale Løsninger for Bedriftsvekst",
+  title: "IntelliSense | Digitale Løsninger for Bedriftsvekst",
   description: "Vi hjelper bedrifter med å vokse gjennom skreddersydde digitale strategier, konverteringsoptimaliserte nettsider og effektiv markedsføring.",
-  keywords: ["digital markedsføring", "nettside", "SEO", "bedriftsvekst", "AI", "Norge"],
-  authors: [{ name: "IntelliSense AI" }],
+  keywords: ["digital markedsføring", "nettside", "SEO", "bedriftsvekst", "Norge"],
+  authors: [{ name: "IntelliSense" }],
   openGraph: {
-    title: "IntelliSense AI | Digitale Løsninger for Bedriftsvekst",
+    title: "IntelliSense | Digitale Løsninger for Bedriftsvekst",
     description: "Vi hjelper bedrifter med å vokse gjennom skreddersydde digitale strategier.",
     url: "https://intellisenseai.no",
-    siteName: "IntelliSense AI",
+    siteName: "IntelliSense",
     locale: "nb_NO",
     type: "website",
   },

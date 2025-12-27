@@ -1,0 +1,29 @@
+<svg width="300" height="80" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient-email" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b4a" />
+      <stop offset="100%" stop-color="#ffb347" />
+    </linearGradient>
+  </defs>
+
+  <!-- Logo -->
+  <rect x="0" y="0" width="56" height="56" rx="14" fill="none" stroke="url(#gradient-email)" stroke-width="2"/>
+  <g stroke="url(#gradient-email)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M16 18L26 28L16 38"/>
+    <path d="M30 18L40 28L30 38"/>
+  </g>
+
+  <!-- Text -->
+  <text x="70" y="20" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+    Intelli<text fill="url(#gradient-email)">Sense</text>
+  </text>
+  <text x="70" y="38" font-family="Arial, sans-serif" font-size="12" fill="#666">
+    Andrea Alborg
+  </text>
+  <text x="70" y="54" font-family="Arial, sans-serif" font-size="12" fill="#666">
+    Daglig leder | +47 467 44 670
+  </text>
+  <text x="70" y="70" font-family="Arial, sans-serif" font-size="12" fill="#0066cc">
+    www.intellisenseai.no
+  </text>
+</svg>

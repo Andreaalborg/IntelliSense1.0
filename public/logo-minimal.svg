@@ -1,0 +1,22 @@
+<svg width="40" height="40" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient-minimal-svg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b4a" />
+      <stop offset="100%" stop-color="#ffb347" />
+    </linearGradient>
+  </defs>
+
+  {/* Minimal - just the arrows */}
+  <g
+    stroke="url(#gradient-minimal-svg)"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  >
+    {/* First arrow */}
+    <path d="M16 18L26 28L16 38" />
+    {/* Second arrow */}
+    <path d="M30 18L40 28L30 38" />
+  </g>
+</svg>

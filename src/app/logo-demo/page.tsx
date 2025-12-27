@@ -1,191 +1,116 @@
 "use client";
 
-import Logo, { LogoAlt, LogoArrows, LogoPurple, LogoChevrons } from "@/components/Logo";
+import { LogoArrows, LogoHollow, LogoMinimal, LogoSignature } from "@/components/Logo";
 
 export default function LogoDemo() {
+  const variants = [
+    { name: "LogoArrows", component: LogoArrows, description: "Standard versjon med fylt bakgrunn" },
+    { name: "LogoHollow", component: LogoHollow, description: "Gjennomsiktig bakgrunn for e-post signaturer" },
+    { name: "LogoMinimal", component: LogoMinimal, description: "Kun pil-symboler, perfekt for minimalistisk design" },
+    { name: "LogoSignature", component: LogoSignature, description: "Kompakt versjon optimalisert for e-post signaturer" },
+  ];
+
   return (
-    <div className="pt-24 min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 py-20">
-        <h1 className="text-4xl font-bold mb-4 text-center">Logo Varianter</h1>
-        <p className="text-[var(--foreground-muted)] text-center mb-16">
-          Velg den logoen du liker best. Alle finnes i både lys og mørk variant.
-        </p>
+    <div className="min-h-screen bg-[var(--background)] py-12">
+      <div className="max-w-6xl mx-auto px-6">
+        <h1 className="text-4xl font-bold text-center mb-12">
+          Logo <span className="gradient-text-warm">Varianter</span>
+        </h1>
 
-        {/* Logo 4: Purple - Like reference image */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-4">
-            <span className="bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] bg-clip-text text-transparent">
-              ⭐ Variant 4: Lilla/Blå (som referanse-bildet)
-            </span>
-          </h2>
-          <p className="text-[var(--foreground-muted)] mb-8">
-            Doble piler med lilla/blå gradient. Matcher referanse-bildet du viste.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-12 rounded-2xl bg-[var(--background-secondary)] border border-[var(--border)] flex flex-col items-center gap-8">
-              <p className="text-sm text-[var(--foreground-muted)]">Mørk bakgrunn</p>
-              <LogoPurple variant="dark" size="lg" />
-              <LogoPurple variant="dark" size="md" />
-              <LogoPurple variant="dark" size="sm" />
-              <LogoPurple variant="dark" size="md" showText={false} />
-            </div>
-            
-            <div className="p-12 rounded-2xl bg-gradient-to-br from-[#6366f1] to-[#4f46e5] flex flex-col items-center gap-8">
-              <p className="text-sm text-white/70">Lys/farget bakgrunn</p>
-              <LogoPurple variant="light" size="lg" />
-              <LogoPurple variant="light" size="md" />
-              <LogoPurple variant="light" size="sm" />
-              <LogoPurple variant="light" size="md" showText={false} />
-            </div>
-          </div>
-        </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {variants.map((variant) => (
+            <div key={variant.name} className="bg-[var(--surface)] p-8 rounded-xl border border-[var(--border)]">
+              <h2 className="text-2xl font-semibold mb-4">{variant.name}</h2>
+              <p className="text-[var(--foreground-muted)] mb-8">{variant.description}</p>
 
-        {/* Logo 5: Chevrons - Triple design */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-4">
-            <span className="bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] bg-clip-text text-transparent">
-              ⭐ Variant 5: Chevrons (eksakt som bildet)
-            </span>
-          </h2>
-          <p className="text-[var(--foreground-muted)] mb-8">
-            Trippel chevron-design som i referanse-bildet.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-12 rounded-2xl bg-[var(--background-secondary)] border border-[var(--border)] flex flex-col items-center gap-8">
-              <p className="text-sm text-[var(--foreground-muted)]">Mørk bakgrunn</p>
-              <LogoChevrons variant="dark" size="lg" />
-              <LogoChevrons variant="dark" size="md" />
-              <LogoChevrons variant="dark" size="sm" />
-              <LogoChevrons variant="dark" size="md" showText={false} />
-            </div>
-            
-            <div className="p-12 rounded-2xl bg-gradient-to-br from-[#7c3aed] to-[#4f46e5] flex flex-col items-center gap-8">
-              <p className="text-sm text-white/70">Lys/farget bakgrunn</p>
-              <LogoChevrons variant="light" size="lg" />
-              <LogoChevrons variant="light" size="md" />
-              <LogoChevrons variant="light" size="sm" />
-              <LogoChevrons variant="light" size="md" showText={false} />
-            </div>
-          </div>
-        </section>
+              <div className="space-y-6">
+                {/* Dark variant */}
+                <div className="bg-[var(--background-secondary)] p-6 rounded-lg">
+                  <h3 className="text-lg font-medium mb-4">Mørk bakgrunn</h3>
+                  <variant.component variant="dark" size="md" />
+                </div>
 
-        <div className="border-t border-[var(--border)] pt-16 mb-16">
-          <h2 className="text-xl font-semibold mb-8 text-center text-[var(--foreground-muted)]">
-            Andre varianter (coral/orange)
-          </h2>
+                {/* Light variant */}
+                <div className="bg-white p-6 rounded-lg border border-gray-200">
+                  <h3 className="text-lg font-medium mb-4">Lys bakgrunn</h3>
+                  <variant.component variant="light" size="md" />
+                </div>
+
+                {/* Different sizes */}
+                <div className="bg-[var(--background-secondary)] p-6 rounded-lg">
+                  <h3 className="text-lg font-medium mb-4">Ulike størrelser</h3>
+                  <div className="flex flex-col gap-4">
+                    <variant.component variant="dark" size="sm" />
+                    <variant.component variant="dark" size="md" />
+                    <variant.component variant="dark" size="lg" />
+                  </div>
+                </div>
+
+                {/* Without text */}
+                <div className="bg-[var(--background-secondary)] p-6 rounded-lg">
+                  <h3 className="text-lg font-medium mb-4">Kun ikon</h3>
+                  <variant.component variant="dark" size="md" showText={false} />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Logo 3: Orange arrows */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-8 gradient-text-warm">Variant 3: Doble piler (coral/orange)</h2>
-          <p className="text-[var(--foreground-muted)] mb-8">
-            Samme stil som lilla, men med coral/orange gradient som matcher resten av nettsiden.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-12 rounded-2xl bg-[var(--background-secondary)] border border-[var(--border)] flex flex-col items-center gap-8">
-              <p className="text-sm text-[var(--foreground-muted)]">Mørk bakgrunn</p>
-              <LogoArrows variant="dark" size="lg" />
-              <LogoArrows variant="dark" size="md" />
-              <LogoArrows variant="dark" size="md" showText={false} />
-            </div>
-            
-            <div className="p-12 rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex flex-col items-center gap-8">
-              <p className="text-sm text-white/70">Lys/farget bakgrunn</p>
-              <LogoArrows variant="light" size="lg" />
-              <LogoArrows variant="light" size="md" />
-              <LogoArrows variant="light" size="md" showText={false} />
-            </div>
-          </div>
-        </section>
+        {/* Usage examples */}
+        <div className="mt-16 bg-[var(--surface)] p-8 rounded-xl border border-[var(--border)]">
+          <h2 className="text-2xl font-semibold mb-6">Brukseksempler</h2>
 
-        {/* Logo 1: Code brackets */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-8 gradient-text-warm">Variant 1: Kode-symboler</h2>
-          <p className="text-[var(--foreground-muted)] mb-8">
-            Chevrons som symboliserer kode og teknologi.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-12 rounded-2xl bg-[var(--background-secondary)] border border-[var(--border)] flex flex-col items-center gap-8">
-              <p className="text-sm text-[var(--foreground-muted)]">Mørk bakgrunn</p>
-              <Logo variant="dark" size="lg" />
-              <Logo variant="dark" size="md" />
-              <Logo variant="dark" size="md" showText={false} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Email signature example */}
+            <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 className="text-lg font-medium mb-4">E-post signatur</h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center gap-3">
+                  <LogoSignature variant="light" size="sm" />
+                  <span className="text-gray-800">Andrea Alborg</span>
+                </div>
+                <p className="text-gray-600">Daglig leder | IntelliSense</p>
+                <p className="text-gray-600">+47 467 44 670 | andreaalborg@intellisenseai.no</p>
+                <p className="text-gray-600">www.intellisenseai.no</p>
+              </div>
             </div>
-            
-            <div className="p-12 rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex flex-col items-center gap-8">
-              <p className="text-sm text-white/70">Lys/farget bakgrunn</p>
-              <Logo variant="light" size="lg" />
-              <Logo variant="light" size="md" />
-              <Logo variant="light" size="md" showText={false} />
-            </div>
-          </div>
-        </section>
 
-        {/* Logo 2: Lightbulb */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-8 gradient-text-warm">Variant 2: Lyspære/Idé</h2>
-          <p className="text-[var(--foreground-muted)] mb-8">
-            Lyspære som symboliserer intelligens og innovasjon.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-12 rounded-2xl bg-[var(--background-secondary)] border border-[var(--border)] flex flex-col items-center gap-8">
-              <p className="text-sm text-[var(--foreground-muted)]">Mørk bakgrunn</p>
-              <LogoAlt variant="dark" size="lg" />
-              <LogoAlt variant="dark" size="md" />
-              <LogoAlt variant="dark" size="md" showText={false} />
-            </div>
-            
-            <div className="p-12 rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex flex-col items-center gap-8">
-              <p className="text-sm text-white/70">Lys/farget bakgrunn</p>
-              <LogoAlt variant="light" size="lg" />
-              <LogoAlt variant="light" size="md" />
-              <LogoAlt variant="light" size="md" showText={false} />
-            </div>
-          </div>
-        </section>
-
-        {/* Comparison */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-8 text-center">Side-ved-side sammenligning</h2>
-          <div className="p-8 rounded-2xl bg-[var(--background-secondary)] border border-[var(--border)]">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
-              <div className="text-center">
-                <Logo variant="dark" size="md" showText={false} />
-                <p className="text-xs text-[var(--foreground-muted)] mt-2">1. Kode</p>
-              </div>
-              <div className="text-center">
-                <LogoAlt variant="dark" size="md" showText={false} />
-                <p className="text-xs text-[var(--foreground-muted)] mt-2">2. Lyspære</p>
-              </div>
-              <div className="text-center">
-                <LogoArrows variant="dark" size="md" showText={false} />
-                <p className="text-xs text-[var(--foreground-muted)] mt-2">3. Piler (orange)</p>
-              </div>
-              <div className="text-center">
-                <LogoPurple variant="dark" size="md" showText={false} />
-                <p className="text-xs text-[var(--foreground-muted)] mt-2">4. Piler (lilla)</p>
-              </div>
-              <div className="text-center">
-                <LogoChevrons variant="dark" size="md" showText={false} />
-                <p className="text-xs text-[var(--foreground-muted)] mt-2">5. Chevrons</p>
+            {/* Business card example */}
+            <div className="bg-gradient-to-br from-[#ff6b4a] to-[#ffb347] p-6 rounded-lg text-white">
+              <h3 className="text-lg font-medium mb-4">Visittkort</h3>
+              <div className="flex items-center gap-4">
+                <LogoMinimal variant="dark" size="md" showText={false} />
+                <div>
+                  <h4 className="font-bold text-lg">IntelliSense</h4>
+                  <p className="text-sm opacity-90">Digitale løsninger</p>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <div className="p-8 rounded-2xl bg-gradient-to-r from-[#6366f1]/10 to-[#8b5cf6]/10 border border-[#6366f1]/20 text-center">
-          <h3 className="text-xl font-semibold mb-2">Hvilken liker du best?</h3>
-          <p className="text-[var(--foreground-muted)]">
-            Gi meg nummeret (1-5) så oppdaterer jeg Header og Footer med din favoritt!
+        {/* Download section */}
+        <div className="mt-12 bg-[var(--background-secondary)] p-8 rounded-xl border border-[var(--border)]">
+          <h2 className="text-2xl font-semibold mb-6">Last ned logoer</h2>
+          <p className="text-[var(--foreground-muted)] mb-6">
+            Du kan bruke disse logo-variantene i forskjellige sammenhenger.
+            De hollow variantene (LogoHollow, LogoMinimal, LogoSignature) er spesielt laget for e-post signaturer og steder hvor du vil ha gjennomsiktig bakgrunn.
           </p>
-          <p className="text-sm text-[var(--foreground-muted)] mt-4">
-            PS: Hvis du velger lilla (4 eller 5), kan vi også oppdatere fargepaletten på hele nettsiden til å matche.
-          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <button className="bg-[var(--primary)] text-white py-3 px-6 rounded-lg font-medium hover:bg-[var(--primary-hover)] transition-colors">
+              Last ned SVG
+            </button>
+            <button className="bg-[var(--secondary)] text-white py-3 px-6 rounded-lg font-medium hover:bg-[var(--secondary-hover)] transition-colors">
+              Last ned PNG
+            </button>
+            <button className="bg-[var(--surface)] border border-[var(--border)] py-3 px-6 rounded-lg font-medium hover:bg-[var(--surface-hover)] transition-colors">
+              Last ned PDF
+            </button>
+            <button className="bg-[var(--surface)] border border-[var(--border)] py-3 px-6 rounded-lg font-medium hover:bg-[var(--surface-hover)] transition-colors">
+              Retningslinjer
+            </button>
+          </div>
         </div>
       </div>
     </div>

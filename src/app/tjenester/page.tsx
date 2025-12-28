@@ -1,17 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Globe, Search, Megaphone, LineChart, Palette, Wrench, 
-  ArrowRight, Check, Sparkles 
+import {
+  Globe, Search, Megaphone, LineChart, Palette, Wrench,
+  ArrowRight, Check, Sparkles
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import { Globe3D, Search3D, Megaphone3D, Chart3D, Palette3D, Gear3D } from "@/components/Illustrations3D";
 
 const services = [
   {
     id: "nettside",
     icon: Globe,
+    illustration: Globe3D,
     title: "Konverteringsoptimalisert Nettside",
     description: "Vi designer og utvikler moderne nettsider som ikke bare ser bra ut, men som faktisk konverterer besøkende til kunder.",
     features: [
@@ -23,11 +24,11 @@ const services = [
       "Skalerbar arkitektur",
     ],
     color: "var(--primary)",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
   },
   {
     id: "seo",
     icon: Search,
+    illustration: Search3D,
     title: "SEO Optimalisering",
     description: "Få bedriften din til toppen av søkeresultatene. Vi implementerer en helhetlig SEO-strategi som gir varige resultater.",
     features: [
@@ -39,11 +40,11 @@ const services = [
       "Lokal SEO",
     ],
     color: "var(--secondary)",
-    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
   },
   {
     id: "markedsforing",
     icon: Megaphone,
+    illustration: Megaphone3D,
     title: "Digital Markedsføring",
     description: "Strategiske kampanjer på tvers av plattformer som driver kvalifisert trafikk og genererer leads for din bedrift.",
     features: [
@@ -55,11 +56,11 @@ const services = [
       "Influencer samarbeid",
     ],
     color: "var(--accent)",
-    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=80",
   },
   {
     id: "analyse",
     icon: LineChart,
+    illustration: Chart3D,
     title: "Data & Analyse",
     description: "Ta datadrevne beslutninger med innsiktsfulle analyser og rapporter som viser hva som faktisk fungerer.",
     features: [
@@ -71,11 +72,11 @@ const services = [
       "ROI måling",
     ],
     color: "var(--primary)",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
   },
   {
     id: "merkevare",
     icon: Palette,
+    illustration: Palette3D,
     title: "Merkevarebygging",
     description: "Vi skaper sterke visuelle identiteter som skiller seg ut og bygger tillit hos målgruppen din.",
     features: [
@@ -87,11 +88,11 @@ const services = [
       "Sosiale medier templates",
     ],
     color: "var(--secondary)",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
   },
   {
     id: "support",
     icon: Wrench,
+    illustration: Gear3D,
     title: "Vedlikehold & Support",
     description: "Kontinuerlig oppfølging og teknisk support som sikrer at løsningene dine alltid fungerer optimalt.",
     features: [
@@ -103,7 +104,6 @@ const services = [
       "Prioritert support",
     ],
     color: "var(--accent)",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
   },
 ];
 
@@ -189,26 +189,14 @@ export default function Tjenester() {
                 </div>
 
                 <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                  <div 
-                    className="aspect-[4/3] rounded-2xl overflow-hidden relative"
-                    style={{ 
+                  <div
+                    className="aspect-[4/3] rounded-2xl flex items-center justify-center relative"
+                    style={{
+                      background: `linear-gradient(135deg, ${service.color}05, ${service.color}02)`,
                       border: `1px solid ${service.color}20`
                     }}
                   >
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    {/* Gradient overlay */}
-                    <div 
-                      className="absolute inset-0"
-                      style={{
-                        background: `linear-gradient(135deg, ${service.color}20, transparent)`
-                      }}
-                    />
+                    <service.illustration size={200} className="opacity-90" />
                   </div>
                 </div>
               </motion.div>

@@ -3,109 +3,85 @@
 import { motion } from "framer-motion";
 import {
   Globe, Search, Megaphone, LineChart, Palette, Wrench,
-  ArrowRight, Check, Sparkles
+  ArrowRight, Sparkles
 } from "lucide-react";
 import Link from "next/link";
-import { Globe3D, Search3D, Megaphone3D, Chart3D, Palette3D, Gear3D } from "@/components/Illustrations3D";
 
 const services = [
   {
     id: "nettside",
     icon: Globe,
-    illustration: Globe3D,
-    title: "Konverteringsoptimalisert Nettside",
-    description: "Vi designer og utvikler moderne nettsider som ikke bare ser bra ut, men som faktisk konverterer besøkende til kunder.",
-    features: [
-      "Responsivt design for alle enheter",
-      "Rask lastetid og optimalisert ytelse",
-      "SEO-vennlig struktur",
-      "Intuitivt brukergrensesnitt",
-      "Integrasjon med CRM og andre verktøy",
-      "Skalerbar arkitektur",
-    ],
+    title: "Nettsider som konverterer",
+    description: "Vi bygger raske, moderne nettsider som ikke bare ser bra ut, men som faktisk konverterer besøkende til betalende kunder.",
+    highlights: ["Responsivt design", "Rask lastetid", "SEO-optimalisert"],
     color: "var(--primary)",
+    href: "/tjenester/nettside",
   },
   {
     id: "seo",
     icon: Search,
-    illustration: Search3D,
     title: "SEO Optimalisering",
-    description: "Få bedriften din til toppen av søkeresultatene. Vi implementerer en helhetlig SEO-strategi som gir varige resultater.",
-    features: [
-      "Teknisk SEO-audit",
-      "Keyword research og analyse",
-      "On-page optimalisering",
-      "Innholdsstrategi",
-      "Link building",
-      "Lokal SEO",
-    ],
+    description: "Få bedriften din til toppen av Google. Vi implementerer en helhetlig SEO-strategi som gir varige resultater og mer organisk trafikk.",
+    highlights: ["Teknisk SEO", "Innholdsstrategi", "Lokal SEO"],
     color: "var(--secondary)",
+    href: "/tjenester/seo",
   },
   {
     id: "markedsforing",
     icon: Megaphone,
-    illustration: Megaphone3D,
     title: "Digital Markedsføring",
     description: "Strategiske kampanjer på tvers av plattformer som driver kvalifisert trafikk og genererer leads for din bedrift.",
-    features: [
-      "Google Ads & Facebook Ads",
-      "Sosiale medier strategi",
-      "E-postmarkedsføring",
-      "Retargeting kampanjer",
-      "Innholdsmarkedsføring",
-      "Influencer samarbeid",
-    ],
+    highlights: ["Google Ads", "Sosiale medier", "Retargeting"],
     color: "var(--accent)",
+    href: "/tjenester/markedsforing",
   },
   {
     id: "analyse",
     icon: LineChart,
-    illustration: Chart3D,
     title: "Data & Analyse",
-    description: "Ta datadrevne beslutninger med innsiktsfulle analyser og rapporter som viser hva som faktisk fungerer.",
-    features: [
-      "Google Analytics oppsett",
-      "Konverteringssporing",
-      "Dashboards og rapporter",
-      "A/B testing",
-      "Heatmaps og brukeranalyse",
-      "ROI måling",
-    ],
+    description: "Ta datadrevne beslutninger med innsiktsfulle analyser og rapporter som viser hva som faktisk fungerer for din bedrift.",
+    highlights: ["Google Analytics", "Konverteringssporing", "A/B testing"],
     color: "var(--primary)",
+    href: "/tjenester/analyse",
   },
   {
     id: "merkevare",
     icon: Palette,
-    illustration: Palette3D,
     title: "Merkevarebygging",
-    description: "Vi skaper sterke visuelle identiteter som skiller seg ut og bygger tillit hos målgruppen din.",
-    features: [
-      "Logo design",
-      "Visuell identitet",
-      "Brand guidelines",
-      "Markedsmateriell",
-      "Presentasjoner",
-      "Sosiale medier templates",
-    ],
+    description: "Vi skaper sterke visuelle identiteter som skiller seg ut i mengden og bygger tillit hos målgruppen din.",
+    highlights: ["Logo design", "Visuell identitet", "Brand guidelines"],
     color: "var(--secondary)",
+    href: "/tjenester/merkevare",
   },
   {
     id: "support",
     icon: Wrench,
-    illustration: Gear3D,
     title: "Vedlikehold & Support",
     description: "Kontinuerlig oppfølging og teknisk support som sikrer at løsningene dine alltid fungerer optimalt.",
-    features: [
-      "Kontinuerlig overvåking",
-      "Sikkerhetsoppdateringer",
-      "Backup og recovery",
-      "Ytelsesoptimalisering",
-      "Innholdsoppdateringer",
-      "Prioritert support",
-    ],
+    highlights: ["24/7 overvåking", "Sikkerhetsoppdateringer", "Rask support"],
     color: "var(--accent)",
+    href: "/tjenester/support",
   },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
 export default function Tjenester() {
   return (
@@ -113,6 +89,7 @@ export default function Tjenester() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[var(--primary)] opacity-[0.05] blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--accent)] opacity-[0.05] blur-[120px]" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
@@ -127,86 +104,119 @@ export default function Tjenester() {
               <span className="gradient-text-warm">digital suksess</span>
             </h1>
             <p className="text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto leading-relaxed">
-              Vi tilbyr helhetlige digitale løsninger tilpasset din bedrifts behov. 
-              Fra strategi og design til utvikling og markedsføring.
+              Vi tilbyr helhetlige digitale løsninger som hjelper bedriften din å vokse. 
+              Fra strategi til implementering – vi er med deg hele veien.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services List */}
+      {/* Services Grid */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="space-y-24">
-            {services.map((service, index) => (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {services.map((service) => (
               <motion.div
                 key={service.id}
-                id={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
+                variants={itemVariants}
               >
-                <div className={index % 2 === 1 ? "md:order-2" : ""}>
+                <Link href={service.href} className="group block h-full">
                   <div 
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                    className="relative h-full p-8 rounded-2xl bg-[var(--background-secondary)] border border-[var(--border)] hover:border-[var(--border-hover)] transition-all duration-500 hover:shadow-2xl overflow-hidden"
                     style={{ 
-                      background: `linear-gradient(135deg, ${service.color}20, ${service.color}10)`,
-                      border: `1px solid ${service.color}30`
+                      boxShadow: `0 0 0 rgba(${service.color === 'var(--primary)' ? '255,107,74' : service.color === 'var(--secondary)' ? '255,179,71' : '78,205,196'}, 0)`,
                     }}
                   >
-                    <service.icon className="w-8 h-8" style={{ color: service.color }} />
-                  </div>
-                  
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">{service.title}</h2>
-                  <p className="text-lg text-[var(--foreground-muted)] mb-8 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3">
-                        <div 
-                          className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                          style={{ background: `${service.color}20` }}
+                    {/* Hover glow effect */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        background: `radial-gradient(circle at 50% 0%, ${service.color}15, transparent 70%)`
+                      }}
+                    />
+                    
+                    {/* Icon */}
+                    <div 
+                      className="relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${service.color}20, ${service.color}10)`,
+                        border: `1px solid ${service.color}30`
+                      }}
+                    >
+                      <service.icon 
+                        className="w-8 h-8 transition-colors" 
+                        style={{ color: service.color }} 
+                      />
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="relative text-xl font-bold mb-3 group-hover:text-[var(--primary)] transition-colors">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="relative text-[var(--foreground-muted)] mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                    
+                    {/* Highlights */}
+                    <div className="relative flex flex-wrap gap-2 mb-6">
+                      {service.highlights.map((highlight) => (
+                        <span 
+                          key={highlight}
+                          className="text-xs px-3 py-1 rounded-full bg-[var(--surface)] text-[var(--foreground-muted)]"
                         >
-                          <Check className="w-3 h-3" style={{ color: service.color }} />
-                        </div>
-                        <span className="text-[var(--foreground-muted)]">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    href="/kontakt"
-                    className="inline-flex items-center gap-2 text-[var(--primary)] font-medium hover:gap-4 transition-all duration-300"
-                  >
-                    Få et tilbud
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </div>
-
-                <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                  <div
-                    className="aspect-[4/3] rounded-2xl flex items-center justify-center relative"
-                    style={{
-                      background: `linear-gradient(135deg, ${service.color}05, ${service.color}02)`,
-                      border: `1px solid ${service.color}20`
-                    }}
-                  >
-                    <service.illustration size={200} className="opacity-90" />
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* CTA */}
+                    <div className="relative flex items-center gap-2 text-[var(--primary)] font-medium">
+                      <span>Les mer</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                    </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 md:py-24 bg-[var(--background-secondary)]">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          >
+            {[
+              { value: "100+", label: "Fornøyde kunder" },
+              { value: "250+", label: "Prosjekter levert" },
+              { value: "98%", label: "Kundetilfredshet" },
+              { value: "5+", label: "År erfaring" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold gradient-text-warm mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-[var(--foreground-muted)]">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-[var(--background-secondary)]">
+      <section className="py-20 md:py-32">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

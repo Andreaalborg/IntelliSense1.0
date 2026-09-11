@@ -49,7 +49,7 @@ export const CHAT_FAQS: ChatFaq[] = [
     question: "SEO — når ser jeg resultater?",
     answer:
       "Første signaler ofte etter 3–6 måneder, tydeligere etter 6–12. Vi rapporterer månedlig. Vil du vite mer? Book en gratis konsultasjon.",
-    keywords: ["seo", "google", "rangering", "synlighet", "organisk", "resultat"],
+    keywords: ["seo", "google", "rangering", "synlighet", "organisk", "resultat", "resultater"],
   },
   {
     question: "Hvordan kontakter jeg dere?",
@@ -78,17 +78,51 @@ export const QUICK_ACTIONS: QuickAction[] = [
   { id: "book", label: "Book konsultasjon", userText: "Jeg vil booke en gratis konsultasjon" },
 ];
 
+/**
+ * Match user input to the best FAQ entry.
+ *
+ * Scoring: each keyword hit adds points.
+ * - Long keywords (>4 chars): 2 pts
+ * - 4-char keywords as word-prefix: 2 pts (handles "pris" → "prisene")
+ * - 3+ char keywords as exact word in single-word queries: 2 pts (handles "SEO")
+ * - Otherwise: 1 pt (avoids over-weighting common words like "hva")
+ * - Bonus: +1 pt if any matched keyword also appears in the FAQ question title
+ * Threshold: score >= 2 required for a match.
+ */
 export function matchFaq(input: string): ChatFaq | null {
-  const q = input.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
+  const normalize = (s: string) =>
+    s.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
+
+  const q = normalize(input);
+  const qWords = q.split(/\W+/).filter(Boolean);
+  const isSingleWordQuery = qWords.filter((w) => w.length >= 3).length === 1;
+
   let best: { faq: ChatFaq; score: number } | null = null;
+
   for (const faq of CHAT_FAQS) {
     let score = 0;
+    const faqQ = normalize(faq.question);
+
     for (const kw of faq.keywords) {
-      const k = kw.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
-      if (q.includes(k)) score += k.length > 4 ? 2 : 1;
+      const k = normalize(kw);
+      if (!q.includes(k)) continue;
+
+      if (k.length > 4) {
+        score += 2;
+      } else if (k.length === 4 && qWords.some((w) => w.startsWith(k))) {
+        score += 2;
+      } else if (k.length >= 3 && isSingleWordQuery && qWords.includes(k)) {
+        score += 2;
+      } else {
+        score += 1;
+      }
+
+      if (faqQ.includes(k) && (k.length >= 4 || isSingleWordQuery)) score += 1;
     }
+
     if (!best || score > best.score) best = { faq, score };
   }
+
   return best && best.score >= 2 ? best.faq : null;
 }
 

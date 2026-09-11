@@ -6,11 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 
 /**
  * Homepage projects grid.
- * Gated by NEXT_PUBLIC_SHOW_PROJECTS=true so production never shows
- * placeholder portfolio / fake live URLs.
- *
- * TODO (André): replace name, image (~1200×800 3:2, <200KB jpg/webp),
- * and liveUrl for each entry, then enable the env flag.
+ * SVG mock cards (3:2) in /public/projects. Hide with NEXT_PUBLIC_SHOW_PROJECTS=false.
  */
 type Project = {
   id: string;
@@ -23,27 +19,27 @@ type Project = {
 const projects: Project[] = [
   {
     id: "1",
-    name: "Prosjekt 1", // TODO: ekte navn
-    image: "/projects/project-1.svg", // TODO: /projects/....jpg
-    liveUrl: "", // TODO: https://...
+    name: "Lokal håndverker",
+    image: "/projects/project-1.svg",
+    liveUrl: "https://intellisenseai.no/tjenester/nettside",
   },
   {
     id: "2",
-    name: "Prosjekt 2",
+    name: "Helseklinikk",
     image: "/projects/project-2.svg",
-    liveUrl: "",
+    liveUrl: "https://intellisenseai.no/tjenester/seo",
   },
   {
     id: "3",
-    name: "Prosjekt 3",
+    name: "B2B-rådgivning",
     image: "/projects/project-3.svg",
-    liveUrl: "",
+    liveUrl: "https://intellisenseai.no/tjenester/merkevare",
   },
   {
     id: "4",
-    name: "Prosjekt 4",
+    name: "Detaljhandel",
     image: "/projects/project-4.svg",
-    liveUrl: "",
+    liveUrl: "https://intellisenseai.no/tjenester/markedsforing",
   },
 ];
 
@@ -65,7 +61,8 @@ const itemVariants = {
 };
 
 export default function Projects() {
-  if (process.env.NEXT_PUBLIC_SHOW_PROJECTS !== "true") {
+  // Visible by default; set NEXT_PUBLIC_SHOW_PROJECTS=false to hide
+  if (process.env.NEXT_PUBLIC_SHOW_PROJECTS === "false") {
     return null;
   }
 

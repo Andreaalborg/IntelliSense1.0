@@ -3,20 +3,24 @@
  *
  * Tests the fix for short-keyword matching (e.g., "pris" → "prisene").
  */
-import { matchFaq, CHAT_FAQS } from "./chatKnowledge";
+import { matchFaq } from "./chatKnowledge";
 
 type TestCase = { input: string; expectMatch: string | null; description: string };
 
 const testCases: TestCase[] = [
-  // Price FAQ tests
-  { input: "Hva koster det?", expectMatch: "Hva koster det?", description: "exact question" },
-  { input: "Hva er prisene deres?", expectMatch: "Hva koster det?", description: "price variation with 'prisene'" },
-  { input: "Priser", expectMatch: "Hva koster det?", description: "short 'Priser' query" },
-  { input: "pris", expectMatch: "Hva koster det?", description: "single keyword 'pris'" },
+  // Price FAQ tests — question is «Hva er prisene deres?» per PR #3
+  { input: "Hva er prisene deres?", expectMatch: "Hva er prisene deres?", description: "exact chip question" },
+  { input: "Hva koster det?", expectMatch: "Hva er prisene deres?", description: "'koster' keyword hits price FAQ" },
+  { input: "Priser", expectMatch: "Hva er prisene deres?", description: "short 'Priser' query" },
+  { input: "pris", expectMatch: "Hva er prisene deres?", description: "single keyword 'pris'" },
+  { input: "prisene", expectMatch: "Hva er prisene deres?", description: "'prisene' matches 'pris' prefix" },
 
   // Delivery time FAQ tests
   { input: "Hvor lang tid tar en nettside?", expectMatch: "Hvor lang tid tar en nettside?", description: "exact nettside question" },
-  { input: "Leveringstid", expectMatch: "Hvor lang tid tar en nettside?", description: "'Leveringstid' maps to time FAQ" },
+  { input: "Leveringstid", expectMatch: "Hvor lang tid tar en nettside?", description: "'Leveringstid' keyword" },
+
+  // Included FAQ tests
+  { input: "Hva er inkludert?", expectMatch: "Hva er inkludert?", description: "exact included question" },
 
   // SEO FAQ tests
   { input: "Når ser jeg resultater fra SEO?", expectMatch: "SEO — når ser jeg resultater?", description: "SEO results question" },

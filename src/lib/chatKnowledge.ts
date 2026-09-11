@@ -6,50 +6,62 @@ export const CHAT_FAQS: ChatFaq[] = [
   {
     question: "Hva gjør IntelliSense?",
     answer:
-      "Vi er et norsk digitalbyrå som hjelper bedrifter med nettsider, SEO, markedsføring og merkevare. Målet er konkret vekst — ikke bare «fine sider».",
-    keywords: ["hva", "gjør", "intellisense", "hvem", "er dere", "byrå"],
+      "Vi er et norsk digitalbyrå som hjelper deg med nettsider, SEO, markedsføring/Ads, analyse, merkevare og support. Book en gratis konsultasjon så finner vi riktig løsning for deg.",
+    keywords: ["hva", "gjør", "intellisense", "hvem", "er dere", "byrå", "tjenester"],
+  },
+  {
+    question: "Hva er prisene deres?",
+    answer:
+      "Alle priser er eks. mva:\n• Starter: 9 900 kr etablering + 990 kr/mnd (1–5 sider)\n• Vekst (anbefalt): 19 900 kr + 1 990 kr/mnd (opptil 10 sider + SEO)\n• Premium: 39 900 kr + 3 990 kr/mnd\n• Egendefinert: book en prat så skreddersyr vi.",
+    keywords: ["pris", "koster", "kostnad", "betaling", "pakke", "måned", "starter", "vekst", "premium", "etablering"],
   },
   {
     question: "Hvor lang tid tar en nettside?",
     answer:
-      "En standard nettside tar vanligvis 4–6 uker. Større prosjekter 8–12 uker. Vi lager en konkret tidsplan før vi starter.",
-    keywords: ["tid", "hvor lang", "uker", "levering", "nettside", "ferdig"],
+      "Typisk 2 uker for en standard nettside. Mer komplekse prosjekter tar 3–4 uker. Vi avtaler konkret tidsplan før oppstart.",
+    keywords: ["tid", "hvor lang", "uker", "levering", "nettside", "ferdig", "leveringstid"],
   },
   {
-    question: "Hva koster det?",
+    question: "Hva er inkludert?",
     answer:
-      "Pris avhenger av omfang. Vi har pakker uten bindingstid, og etablering kan ofte deles i avdrag. Best er en kort prat så vi treffer riktig nivå — ikke et generisk prislapp-gjett.",
-    keywords: ["pris", "koster", "kostnad", "betaling", "pakke", "måned", "avdrag"],
+      "Alle pakker inkluderer responsivt design, SEO-grunnlag, kontaktskjema, Google Analytics, SSL-sertifikat og hosting. Book en gratis konsultasjon for detaljer.",
+    keywords: ["inkludert", "inkluderer", "med", "inneholder", "design", "hosting", "ssl", "analytics"],
+  },
+  {
+    question: "Hvilke tjenester tilbyr dere?",
+    answer:
+      "Vi tilbyr nettside, SEO, markedsføring/Ads, analyse, merkevare og support. Vil du vite mer om en spesifikk tjeneste? Book gjerne en gratis konsultasjon.",
+    keywords: ["tjeneste", "tilbyr", "service", "seo", "ads", "markedsføring", "merkevare", "analyse"],
   },
   {
     question: "Har dere bindingstid?",
     answer:
-      "Nei. Du kan si opp med én måneds varsel. Vi stoler på at resultatet gjør at du vil bli.",
-    keywords: ["binding", "si opp", "kontrakt", "varsel"],
+      "Nei, ingen bindingstid. Du kan si opp med én måneds varsel. Vi stoler på at resultatet gjør at du vil bli.",
+    keywords: ["binding", "si opp", "kontrakt", "varsel", "bindingstid"],
   },
   {
     question: "Eier jeg nettsiden?",
     answer:
-      "Ja. Du eier innholdet. Avslutter du, kan du eksportere og ta det med videre.",
-    keywords: ["eier", "eie", "innhold", "flytte", "eksport"],
+      "Ja, du eier innholdet. Avslutter du samarbeidet, kan du eksportere alt og ta det med videre.",
+    keywords: ["eier", "eie", "innhold", "flytte", "eksport", "mine"],
   },
   {
     question: "SEO — når ser jeg resultater?",
     answer:
-      "Første signaler ofte etter 3–6 måneder, tydeligere etter 6–12. Vi rapporterer månedlig. Ingen garanterer «#1 på Google» — vi jobber etter beste praksis.",
-    keywords: ["seo", "google", "rangering", "synlighet", "organisk"],
+      "Første signaler ofte etter 3–6 måneder, tydeligere etter 6–12. Vi rapporterer månedlig. Vil du vite mer? Book en gratis konsultasjon.",
+    keywords: ["seo", "google", "rangering", "synlighet", "organisk", "resultat"],
+  },
+  {
+    question: "Hvordan kontakter jeg dere?",
+    answer:
+      "Du når oss på andreaalborg@intellisenseai.no eller +47 467 44 670. Vi svarer innen 24 timer på hverdager.",
+    keywords: ["kontakt", "e-post", "epost", "telefon", "ring", "mail", "nå dere"],
   },
   {
     question: "Support og responstid",
     answer:
-      "Standard: svar innen 24 timer på hverdager. Premium: innen 2 timer i arbeidstid. Du når oss på e-post, telefon eller denne chatten.",
-    keywords: ["support", "hjelp", "responstid", "svar", "telefon"],
-  },
-  {
-    question: "Integrasjoner",
-    answer:
-      "Ja — CRM, betaling, booking m.m. via API. Vi bruker bl.a. Next.js/React og kobler mot systemer som HubSpot og GoHighLevel.",
-    keywords: ["integr", "api", "crm", "booking", "hubspot", "stripe"],
+      "Vi svarer innen 24 timer på hverdager. Du når oss på e-post, telefon eller denne chatten.",
+    keywords: ["support", "hjelp", "responstid", "svar", "hverdager"],
   },
 ];
 
@@ -60,10 +72,10 @@ export type QuickAction = {
 };
 
 export const QUICK_ACTIONS: QuickAction[] = [
-  { id: "price", label: "Priser", userText: "Hva koster det?" },
-  { id: "web", label: "Nettside", userText: "Hvor lang tid tar en nettside?" },
-  { id: "seo", label: "SEO", userText: "Når ser jeg resultater fra SEO?" },
-  { id: "book", label: "Book samtale", userText: "Jeg vil booke en gratis konsultasjon" },
+  { id: "price", label: "Priser", userText: "Hva er prisene deres?" },
+  { id: "time", label: "Leveringstid", userText: "Hvor lang tid tar en nettside?" },
+  { id: "included", label: "Hva er inkludert?", userText: "Hva er inkludert?" },
+  { id: "book", label: "Book konsultasjon", userText: "Jeg vil booke en gratis konsultasjon" },
 ];
 
 export function matchFaq(input: string): ChatFaq | null {
@@ -83,4 +95,7 @@ export function matchFaq(input: string): ChatFaq | null {
 export const BOOKING_URL = "/kontakt";
 export const PHONE_HREF = "tel:+4746744670";
 export const MAIL_HREF =
-  "mailto:andreaalborg@intellisenseai.no?subject=Foresp%C3%B8rsel%20fra%20chat";
+  "mailto:andreaalborg@intellisenseai.no?subject=Foresp%C3%B8rsel%20fra%20chat&body=Kilde%3A%20Chatbot";
+
+export const BOOKING_CTA_TEXT =
+  "Flott — book en gratis, uforpliktende konsultasjon her:";

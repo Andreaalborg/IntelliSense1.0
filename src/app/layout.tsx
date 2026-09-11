@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import ChatWidget from "@/components/ChatWidget";
+import GHLChatWidget from "@/components/GHLChatWidget";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -48,6 +49,7 @@ export default function RootLayout({
         <Footer />
         <CookieConsent />
         <ChatWidget />
+        <GHLChatWidget />
       </body>
     </html>
   );

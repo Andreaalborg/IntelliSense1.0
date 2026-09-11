@@ -2,10 +2,11 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Calendar, MessageCircle, Send, X, Phone } from "lucide-react";
+import { Calendar, MessageCircle, Send, X, Phone, User } from "lucide-react";
 import Link from "next/link";
 import {
   BOOKING_URL,
+  BOOKING_CTA_TEXT,
   CHAT_FAQS,
   MAIL_HREF,
   PHONE_HREF,
@@ -17,7 +18,7 @@ type Msg = {
   id: string;
   role: "bot" | "user";
   text: string;
-  cta?: "book" | "contact";
+  cta?: "book" | "contact" | "human";
 };
 
 function uid() {
@@ -27,7 +28,7 @@ function uid() {
 const WELCOME: Msg = {
   id: "welcome",
   role: "bot",
-  text: "Hei! Jeg er IntelliSense-assistenten. Spør om priser, nettside, SEO — eller book en uforpliktende samtale.",
+  text: "Hei! Jeg er IntelliSense-assistenten. Spør om priser, leveringstid eller book en gratis konsultasjon.",
 };
 
 export default function ChatWidget() {
@@ -62,12 +63,18 @@ export default function ChatWidget() {
       /book|konsult|samtale|møte|mot[eé]|ring meg|kontakt|demo|tilbud/.test(
         lower
       );
+    const wantsHuman = /menneske|person|snakke med|ekte/.test(lower);
+
+    if (wantsHuman) {
+      pushBot(
+        "Selvfølgelig! Du kan nå oss direkte via kontaktskjemaet vårt.",
+        "human"
+      );
+      return;
+    }
 
     if (wantsBook) {
-      pushBot(
-        "Supert — la oss booke. Du kan gå rett til kontaktskjemaet, eller legge igjen navn/e-post her så prioriterer vi deg.",
-        "book"
-      );
+      pushBot(BOOKING_CTA_TEXT, "book");
       setShowLead(true);
       return;
     }
@@ -75,12 +82,12 @@ export default function ChatWidget() {
     const hit = matchFaq(text);
     if (hit) {
       pushBot(hit.answer);
-      pushBot("Vil du booke en gratis prat om dette?", "book");
+      pushBot("Vil du booke en gratis, uforpliktende konsultasjon?", "book");
       return;
     }
 
     pushBot(
-      "Jeg fant ikke et eksakt svar der. Vanlige temaer: priser, nettside-tid, SEO, bindingstid og support. Ellers booker vi en kort samtale.",
+      "Jeg fant ikke et eksakt svar der. Vanlige temaer: priser, leveringstid, hva som er inkludert og våre tjenester. Ellers kan du booke en gratis konsultasjon eller snakke med et menneske.",
       "contact"
     );
   }
@@ -93,14 +100,14 @@ export default function ChatWidget() {
   function submitLead(e: FormEvent) {
     e.preventDefault();
     if (!leadName.trim() || !leadEmail.trim()) return;
-    const subject = encodeURIComponent(`Chat-lead: ${leadName.trim()}`);
+    const subject = encodeURIComponent(`Chatbot-lead: ${leadName.trim()}`);
     const body = encodeURIComponent(
-      `Navn: ${leadName.trim()}\nE-post: ${leadEmail.trim()}\nBehov: ${leadNeed.trim() || "(ikke oppgitt)"}\n\nKilde: AI-chat widget på intellisenseai.no`
+      `Navn: ${leadName.trim()}\nE-post: ${leadEmail.trim()}\nBehov: ${leadNeed.trim() || "(ikke oppgitt)"}\n\nKilde: Chatbot på intellisenseai.no`
     );
     window.location.href = `mailto:andreaalborg@intellisenseai.no?subject=${subject}&body=${body}`;
     setLeadSent(true);
     pushBot(
-      `Takk, ${leadName.trim().split(" ")[0]}! Åpner e-post med forespørselen din. Du kan også fullføre på kontaktsiden.`
+      `Takk, ${leadName.trim().split(" ")[0]}! Åpner e-post med forespørselen din. Du kan også fullføre på kontaktsiden hvor vi har et GHL-skjema som går rett til CRM.`
     );
   }
 
@@ -122,7 +129,7 @@ export default function ChatWidget() {
                 <div>
                   <p className="text-sm font-semibold">IntelliSense</p>
                   <p className="text-xs text-[var(--foreground-muted)]">
-                    Spørsmål · lead · booking
+                    Spørsmål · priser · booking
                   </p>
                 </div>
                 <button
@@ -148,7 +155,7 @@ export default function ChatWidget() {
                           : "bg-[var(--background-secondary)] border border-[var(--border)] rounded-bl-md"
                       }`}
                     >
-                      <p>{msg.text}</p>
+                      <p className="whitespace-pre-line">{msg.text}</p>
                       {msg.cta === "book" && (
                         <div className="mt-3 flex flex-wrap gap-2">
                           <Link
@@ -157,7 +164,7 @@ export default function ChatWidget() {
                             onClick={() => setOpen(false)}
                           >
                             <Calendar className="w-3.5 h-3.5" />
-                            Gå til kontaktskjema
+                            Book konsultasjon
                           </Link>
                           <a
                             href={PHONE_HREF}
@@ -168,6 +175,18 @@ export default function ChatWidget() {
                           </a>
                         </div>
                       )}
+                      {msg.cta === "human" && (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <Link
+                            href="/kontakt"
+                            className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-[var(--primary)] text-white"
+                            onClick={() => setOpen(false)}
+                          >
+                            <User className="w-3.5 h-3.5" />
+                            Snakk med menneske
+                          </Link>
+                        </div>
+                      )}
                       {msg.cta === "contact" && (
                         <div className="mt-3 flex flex-wrap gap-2">
                           <button
@@ -175,17 +194,20 @@ export default function ChatWidget() {
                             className="text-xs font-medium px-3 py-1.5 rounded-full bg-[var(--primary)] text-white"
                             onClick={() => {
                               setShowLead(true);
-                              pushBot("Legg igjen navn og e-post, så tar vi det derfra.", "book");
+                              pushBot(
+                                "Legg igjen navn og e-post, så tar vi det derfra.",
+                                "book"
+                              );
                             }}
                           >
                             Legg igjen kontaktinfo
                           </button>
                           <Link
-                            href="/faq"
+                            href="/kontakt"
                             className="text-xs font-medium px-3 py-1.5 rounded-full border border-[var(--border)]"
                             onClick={() => setOpen(false)}
                           >
-                            Se FAQ
+                            Snakk med menneske
                           </Link>
                         </div>
                       )}
@@ -199,7 +221,7 @@ export default function ChatWidget() {
                     className="rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] p-3 space-y-2"
                   >
                     <p className="text-xs font-medium text-[var(--foreground-muted)]">
-                      Kvalifisering (valgfritt før booking)
+                      Legg igjen info (valgfritt — du kan også gå rett til /kontakt)
                     </p>
                     <input
                       value={leadName}
@@ -228,12 +250,22 @@ export default function ChatWidget() {
                     >
                       Send forespørsel
                     </button>
-                    <a
-                      href={MAIL_HREF}
-                      className="block text-center text-xs text-[var(--foreground-muted)] hover:text-[var(--primary)]"
-                    >
-                      Eller send e-post direkte
-                    </a>
+                    <p className="text-center text-xs text-[var(--foreground-muted)]">
+                      <a
+                        href={MAIL_HREF}
+                        className="hover:text-[var(--primary)]"
+                      >
+                        Eller send e-post direkte
+                      </a>
+                      {" · "}
+                      <Link
+                        href="/kontakt"
+                        className="hover:text-[var(--primary)]"
+                        onClick={() => setOpen(false)}
+                      >
+                        GHL-skjema (CRM)
+                      </Link>
+                    </p>
                   </form>
                 )}
 

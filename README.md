@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Chat Widget
+
+The site includes a custom FAQ chat widget (`ChatWidget`) that handles common questions about prices, delivery times, and services. It also routes users to `/kontakt` for the GHL CRM form.
+
+### Optional GoHighLevel Chat Widget
+
+To load an additional GoHighLevel chat widget alongside (or instead of) the custom FAQ widget, set the following environment variable:
+
+```bash
+NEXT_PUBLIC_GHL_CHAT_WIDGET_SCRIPT=https://widgets.leadconnectorhq.com/loader.js
+```
+
+When set, the GHL widget script is loaded with `lazyOnload` strategy. When unset, only the custom ChatWidget is active.
+
+To use the GHL widget exclusively, you can hide the custom widget via CSS or conditionally render it based on the env variable.

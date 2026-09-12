@@ -1,50 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Globe, Search, Megaphone, BarChart3, Palette, Headphones } from "lucide-react";
 import Link from "next/link";
-import { 
-  Icon8Globe, 
-  Icon8Search, 
-  Icon8Megaphone, 
-  Icon8Chart, 
-  Icon8Palette, 
-  Icon8Support 
-} from "@/components/Icons8";
 
 const services = [
   {
-    icon: Icon8Globe,
+    icon: Globe,
     title: "Konverteringsoptimalisert Nettside",
     description: "Vi bygger moderne, raske nettsider som ikke bare ser bra ut, men som faktisk konverterer besøkende til kunder.",
     href: "/tjenester#nettside",
   },
   {
-    icon: Icon8Search,
+    icon: Search,
     title: "SEO Optimalisering",
     description: "Få bedriften din til toppen av søkeresultatene. Vi implementerer en helhetlig SEO-strategi som gir varige resultater.",
     href: "/tjenester#seo",
   },
   {
-    icon: Icon8Megaphone,
+    icon: Megaphone,
     title: "Digital Markedsføring",
     description: "Strategiske kampanjer på tvers av plattformer som driver kvalifisert trafikk og genererer leads.",
     href: "/tjenester#markedsforing",
   },
   {
-    icon: Icon8Chart,
+    icon: BarChart3,
     title: "Data & Analyse",
     description: "Få innsikt i kundeatferd og optimaliser basert på data. Vi sporer det som betyr noe.",
     href: "/tjenester#analyse",
   },
   {
-    icon: Icon8Palette,
+    icon: Palette,
     title: "Merkevarebygging",
     description: "Vi skaper visuelle identiteter som skiller seg ut og bygger tillit hos målgruppen din.",
     href: "/tjenester#merkevare",
   },
   {
-    icon: Icon8Support,
+    icon: Headphones,
     title: "Vedlikehold & Support",
     description: "Kontinuerlig oppfølging og teknisk support som sikrer at alt fungerer optimalt.",
     href: "/tjenester#support",
@@ -129,7 +121,9 @@ export default function Services() {
                 className="group block h-full p-8 rounded-2xl bg-[var(--background)] border border-[var(--border)] hover:border-[var(--border-hover)] transition-all duration-500 hover:shadow-2xl hover:shadow-[var(--primary)]/5"
               >
                 <div className="flex justify-center mb-6 transition-transform duration-300 group-hover:scale-110">
-                  <service.icon size={80} />
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex items-center justify-center shadow-lg shadow-[var(--primary)]/20">
+                    <service.icon className="w-7 h-7 text-white" strokeWidth={1.75} />
+                  </div>
                 </div>
                 
                 <h3 className="text-xl font-semibold mb-3 text-center group-hover:text-[var(--primary)] transition-colors flex items-center justify-center gap-2">
